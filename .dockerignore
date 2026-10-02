@@ -1,0 +1,9 @@
+.git
+.agents
+.github
+.idea
+target
+docs
+scripts
+*.md
+.env*

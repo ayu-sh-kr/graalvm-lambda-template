@@ -1,0 +1,47 @@
+name: Verify native template
+on:
+  pull_request:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: '25'
+          distribution: graalvm-community
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          cache: maven
+      - name: JVM integration tests and agent metadata
+        run: scripts/trace.sh
+      - name: Native integration tests
+        run: scripts/test-native.sh
+      - name: Build Linux Lambda image
+        run: scripts/build-image.sh
+      - name: Smoke test the native image
+        shell: bash
+        run: |
+          docker run -d --name native-template -p 8080:8080 native-lambda:local
+          trap 'docker logs native-template; docker rm -f native-template' EXIT
+          ready=false
+          for attempt in {1..60}; do
+            if curl -fsS http://localhost:8080/health; then ready=true; break; fi
+            sleep 1
+          done
+          test "$ready" = true
+          scripts/smoke.sh
+      - name: Upload generated metadata and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-verification
+          path: |
+            src/main/resources/META-INF/native-image/com.example/native-lambda/
+            target/surefire-reports/
+            target/native-test-reports/
