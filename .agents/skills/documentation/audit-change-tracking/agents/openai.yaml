@@ -1,0 +1,5 @@
+interface:
+  display_name: Audit Change Tracking
+  short_description: Audit change tracking guidance
+  default_prompt: Use $audit-change-tracking to complete the relevant work in this
+    Kotlin application, following AGENTS.md.

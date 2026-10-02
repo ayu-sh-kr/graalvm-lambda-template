@@ -1,0 +1,7 @@
+interface:
+  display_name: API Route Conventions
+  short_description: Api route conventions guidance
+  default_prompt: Use $api-route-conventions to complete the relevant work in this
+    Kotlin application, following AGENTS.md.
+policy:
+  allow_implicit_invocation: true

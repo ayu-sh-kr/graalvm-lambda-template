@@ -1,0 +1,5 @@
+interface:
+  display_name: SVG API Flow Diagrams
+  short_description: Svg api flow diagrams guidance
+  default_prompt: Use $svg-api-flow-diagrams to complete the relevant work in this
+    Kotlin application, following AGENTS.md.

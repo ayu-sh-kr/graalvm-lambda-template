@@ -1,0 +1,5 @@
+interface:
+  display_name: Assertion Message Guidelines
+  short_description: Assertion message guidelines guidance
+  default_prompt: Use $assertion-message-guidelines to complete the relevant work
+    in this Kotlin application, following AGENTS.md.

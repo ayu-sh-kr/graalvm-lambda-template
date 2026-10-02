@@ -1,0 +1,5 @@
+interface:
+  display_name: PostgreSQL Function Migrations
+  short_description: Postgresql function migrations guidance
+  default_prompt: Use $postgresql-function-migrations to complete the relevant work
+    in this Kotlin application, following AGENTS.md.

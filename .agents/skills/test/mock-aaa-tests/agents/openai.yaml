@@ -1,0 +1,5 @@
+interface:
+  display_name: Mock AAA Tests
+  short_description: Mock aaa tests guidance
+  default_prompt: Use $mock-aaa-tests to complete the relevant work in this Kotlin
+    application, following AGENTS.md.
