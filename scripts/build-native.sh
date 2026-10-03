@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
+
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
-command -v native-image >/dev/null || { echo "Use GraalVM JDK 25 with native-image installed." >&2; exit 1; }
-exec ./mvnw -B clean -Pnative -DskipTests native:compile "$@"
+
+# Use the source project's local AOT profile when requested.
+profile=native
+if [[ "${1:-}" == "--local" ]]; then
+  profile=native,native-local
+  shift
+fi
+
+exec ./mvnw "-P$profile" native:compile "$@"

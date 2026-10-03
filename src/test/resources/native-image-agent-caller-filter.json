@@ -1,0 +1,46 @@
+{
+  "rules": [
+    {
+      "excludeClasses": "**"
+    },
+    {
+      "includeClasses": "com.example.lambda.**"
+    },
+    {
+      "includeClasses": "org.springframework.**"
+    },
+    {
+      "includeClasses": "kotlin.reflect.**"
+    },
+    {
+      "includeClasses": "kotlin.jvm.**"
+    },
+    {
+      "includeClasses": "tools.jackson.**"
+    },
+    {
+      "includeClasses": "com.amazonaws.serverless.**"
+    },
+    {
+      "includeClasses": "com.amazonaws.services.lambda.**"
+    },
+    {
+      "includeClasses": "software.amazon.awssdk.**"
+    },
+    {
+      "includeClasses": "org.springdoc.**"
+    },
+    {
+      "includeClasses": "io.swagger.v3.**"
+    },
+    {
+      "includeClasses": "org.flywaydb.**"
+    },
+    {
+      "includeClasses": "com.zaxxer.hikari.**"
+    },
+    {
+      "includeClasses": "org.postgresql.**"
+    }
+  ]
+}
