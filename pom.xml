@@ -16,9 +16,25 @@
   <properties>
     <java.version>25</java.version>
     <kotlin.version>2.3.21</kotlin.version>
+    <aws.serverless.java.container.version>3.0.2</aws.serverless.java.container.version>
     <start-class>com.example.lambda.ApplicationKt</start-class>
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws.serverless</groupId>
+      <artifactId>aws-serverless-java-container-springboot4</artifactId>
+      <version>${aws.serverless.java.container.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>tools.jackson.module</groupId>
+          <artifactId>jackson-module-afterburner</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc</artifactId>
@@ -55,10 +71,6 @@
       <plugin>
         <groupId>org.graalvm.buildtools</groupId>
         <artifactId>native-maven-plugin</artifactId>
-        <configuration>
-          <imageName>native-lambda</imageName>
-          <mainClass>${start-class}</mainClass>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
@@ -80,4 +92,27 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>native-local</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>process-aot</id>
+                <configuration>
+                  <arguments>
+                    <argument>--spring.profiles.active=local</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

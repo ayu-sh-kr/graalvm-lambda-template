@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
-/** Uses ordinary Spring MVC routes locally and behind Lambda Web Adapter. */
+/** Exposes the greeting routes through Spring MVC. */
 @RestController
 class GreetingController(private val service: GreetingService) {
   @GetMapping("/hello")
