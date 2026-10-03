@@ -1,0 +1,5 @@
+interface:
+  display_name: Flyway Migrations
+  short_description: Flyway migrations guidance
+  default_prompt: Use $flyway-migrations to complete the relevant work in this Kotlin
+    application, following AGENTS.md.

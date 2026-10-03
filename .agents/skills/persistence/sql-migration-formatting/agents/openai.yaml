@@ -1,0 +1,5 @@
+interface:
+  display_name: SQL Migration Formatting
+  short_description: Sql migration formatting guidance
+  default_prompt: Use $sql-migration-formatting to complete the relevant work in this
+    Kotlin application, following AGENTS.md.

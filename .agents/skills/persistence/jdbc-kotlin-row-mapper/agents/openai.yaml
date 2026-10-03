@@ -1,0 +1,5 @@
+interface:
+  display_name: JDBC Kotlin Row Mapper
+  short_description: Jdbc kotlin row mapper guidance
+  default_prompt: Use $jdbc-kotlin-row-mapper to complete the relevant work in this
+    Kotlin application, following AGENTS.md.

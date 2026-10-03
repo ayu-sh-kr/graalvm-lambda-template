@@ -1,0 +1,39 @@
+name: Build and test
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  JAVA_VERSION: '25'
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up Java
+        uses: actions/setup-java@v6.0.1
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v4.4.1
+
+      - name: Check Maven wrapper
+        run: ./mvnw --batch-mode --version
+
+      # Maven compiles, runs tests, and then packages the application.
+      - name: Compile, test, and package
+        run: ./mvnw --batch-mode clean verify

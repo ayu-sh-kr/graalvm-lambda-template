@@ -1,0 +1,7 @@
+interface:
+  display_name: Spring Controller Wiring
+  short_description: Spring controller wiring guidance
+  default_prompt: Use $spring-controller-wiring to complete the relevant work in this
+    Kotlin application, following AGENTS.md.
+policy:
+  allow_implicit_invocation: true
