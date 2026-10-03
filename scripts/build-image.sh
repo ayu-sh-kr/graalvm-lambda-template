@@ -8,6 +8,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 image="${1:-native-lambda:latest}"
 
 exec docker build \
+  --pull \
   --platform linux/arm64 \
   --provenance=false \
   --sbom=false \

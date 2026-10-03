@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>4.1.0</version>
+    <version>4.1.1</version>
     <relativePath/>
   </parent>
   <groupId>com.example</groupId>
@@ -15,8 +15,11 @@
   <description>Kotlin Spring Boot native application for AWS Lambda</description>
   <properties>
     <java.version>25</java.version>
-    <kotlin.version>2.3.21</kotlin.version>
+    <kotlin.version>2.4.20</kotlin.version>
     <aws.serverless.java.container.version>3.0.2</aws.serverless.java.container.version>
+    <jackson-2-bom.version>2.22.3</jackson-2-bom.version>
+    <jackson-bom.version>3.2.3</jackson-bom.version>
+    <native-build-tools-plugin.version>1.1.14</native-build-tools-plugin.version>
     <start-class>com.example.lambda.ApplicationKt</start-class>
   </properties>
   <dependencies>

@@ -1,4 +1,4 @@
-FROM ghcr.io/graalvm/native-image-community:25 AS deps
+FROM ghcr.io/graalvm/native-image-community:25i4-25.0.4.1.1-ol9 AS deps
 
 WORKDIR /app
 
